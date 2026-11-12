@@ -6,6 +6,64 @@ Release notes for this project (user-facing). Versions are listed from newest to
 
 更新日志口径：一段 = 一个用户可感知的结果；不写机制与实现细节（注入、回落、渲染、状态枚举等属实现层）；同一件事只出现一次；每节 ≤ 3 条；只写用户会注意到的行为迁移，文档维护与文案微调不单列。
 
+## [1.33.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.33.0) — 2026-11-13
+
+> **中文**：**上游基线同步（v1.59.0）+ 代码模式运行时换代 + 依赖安全清零**——代码模式改用内置 JavaScript 运行时，启动更轻、依赖面收敛；修复取消/超时的 shell 命令残留子进程、多家提供商的请求细节（Databricks Gemini 思考等级、OpenRouter 变体、LiteLLM 视觉、429 重试等待、Bedrock 回落）与压缩/回合错误报告；MCP 运行时与 Markdown 渲染依赖升级，未登记安全通告归零。
+
+### 新增
+- 三个内置提供商模板：**Lemonade**、**RouterPlex**、**AIHubMix**（选择即可接入，无需手工配置）。
+- 代码模式提供更完整的工具发现与批量调用（`list_functions` / `get_function_details` / `execute_javascript`）。
+
+### 变更
+- **代码模式改用内置 JavaScript 运行时**：不再依赖外部 JS 运行时组件，安装包与依赖面更轻；代码块标记与工具名统一为 `execute_javascript`。
+- **自定义系统提示词模板出错时会明确报错**：此前语法错误会静默改用默认提示词，容易让人误以为自定义已生效。
+- **工具调用标题简化**：对话中的工具调用标题改为「工具名 + 首参」，更简洁（首参过长时截断至 80 字符）。
+
+### 修复
+- **取消或超时的 shell 命令会连同其子进程一起结束**：此前可能残留后台进程继续读写输出。
+- **多家提供商请求细节修正**：Databricks（Gemini 思考等级与 Gemini 3 Pro 档位）、OpenRouter（`:free` / `:nitro` 变体解析）、LiteLLM（按模型信息判断视觉能力）、限流 429 的 Retry-After 等待、Bedrock（不支持文档块的模型回落默认推理）。
+- **错误不再被吞**：压缩失败、以错误结束的回合、无效的系统提示词模板现在都会明确报错；调度任务使用配方自身的设置。
+- **安全阈值说明方向修正**：阈值说明改为「值越低越严格」，此前方向表述有误。
+
+### 安全
+- MCP 运行时升级至 rmcp 3.9.0（修复 3 项 RustSec 通告，含 1 项 High）。
+- Markdown 渲染依赖升级至 pulldown-cmark 0.13.6（修复 RUSTSEC-2026-0433，High）。
+- 解压库升级至 zip 9（我方代码路径不再使用 zip 8；其余 zip 8 通告经不可达论证登记）。
+
+> **English**: **Upstream baseline sync (v1.59.0), a new built-in JavaScript runtime for code mode, and a clean dependency audit** — code mode now runs on a built-in JavaScript runtime (lighter startup, smaller dependency surface); fixed shell commands leaving child processes behind on cancel/timeout, several provider request details (Databricks Gemini thinking level, OpenRouter variant suffixes, LiteLLM vision, 429 Retry-After, Bedrock fallback) and silent error reporting; MCP runtime and Markdown rendering dependencies upgraded, no unregistered advisories remain.
+
+### Added
+- Three built-in provider templates: **Lemonade**, **RouterPlex**, and **AIHubMix** (pick and connect, no manual configuration).
+- Code mode offers fuller tool discovery and batching (`list_functions`, `get_function_details`, `execute_javascript`).
+
+### Changed
+- **Code mode now uses a built-in JavaScript runtime**: no external JS runtime component, lighter install and dependency surface; the code fence tag and tool name are unified as `execute_javascript`.
+- **Invalid custom system-prompt templates now fail loudly**: a syntax error used to silently fall back to the default prompt, which made custom prompts look applied when they were not.
+- **Simplified tool-call titles**: tool-call titles in chats now show "tool name + first argument" (truncated at 80 characters).
+
+### Fixed
+- **Cancelled or timed-out shell commands now terminate their child processes too**: previously a background process could survive and keep writing output.
+- **Provider request details corrected**: Databricks (Gemini thinking level and the Gemini 3 Pro tier), OpenRouter (`:free` / `:nitro` variant suffixes), LiteLLM (vision support from model info), 429 Retry-After honoring, Bedrock (models without document-block support fall back to default inference).
+- **Errors are no longer swallowed**: failed compaction, turns ending on an error, and invalid system-prompt templates now report an error; scheduled runs use the recipe's own settings.
+- **Security threshold wording corrected**: the explanation now reads "lower values are stricter"; the direction was previously stated incorrectly.
+
+### Security
+- MCP runtime upgraded to rmcp 3.9.0 (fixes 3 RustSec advisories, 1 High).
+- Markdown rendering dependency upgraded to pulldown-cmark 0.13.6 (RUSTSEC-2026-0433, High).
+- Extraction library upgraded to zip 9 (our code paths no longer use zip 8; remaining zip 8 advisories are documented as unreachable).
+
+## [1.32.1](https://github.com/getchengyoung/chengyoung/releases/tag/v1.32.1) — 2026-11-10
+
+> **中文**：**Windows 安装包与全部程序文件现已代码签名**——安装包、主程序、内核与网关均带 Authenticode 数字签名（RFC3161 时间戳），浏览器下载时的 SmartScreen「未知发布者」拦截将随签名信誉逐步消失；应用内自动更新链路不变。
+
+### 安全
+- 安装包与全部程序文件启用 Authenticode 代码签名（Certum 云端证书；RFC3161 时间戳服务 time.certum.pl）。
+
+> **English**: **The Windows installer and all bundled executables are now code-signed** — the installer, main program, bundled kernel and gateway all carry Authenticode signatures (RFC3161 timestamped); browser-download SmartScreen "unknown publisher" warnings will fade as signature reputation builds; the in-app auto-update flow is unchanged.
+
+### Security
+- Installer and all bundled executables are now Authenticode-signed (Certum cloud certificate; timestamp service time.certum.pl).
+
 ## [1.32.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.32.0) — 2026-11-03
 
 > **中文**：**界面语言切换即时生效 + 空回复重试与提醒**——切换界面语言不再需要重启（16 种语言、含跟随系统）；模型偶发空回复时消息内一键重试、通知中心留档提醒。
