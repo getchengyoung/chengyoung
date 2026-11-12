@@ -19,6 +19,10 @@ ChengYoung 是一款运行在本机的通用桌面 AI 智能体应用，可用�
 
 ---
 
+<div align="center">
+  <img src="docs/screenshots/ui-1.0.png" alt="ChengYoung 工作台主界面：本地模型、起手指令与最近会话" width="900">
+</div>
+
 ## 亮点
 
 | 亮点 | 说明 |
