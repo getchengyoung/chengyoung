@@ -70,7 +70,7 @@ ChengYoung 是一款运行在本机的通用桌面 AI 智能体应用，可用�
 ## 环境要求
 
 - Windows 10 / 11（x64）
-- 安装包约 65 MB（随版本略有变化，已含本地推理引擎）；本地模型按需下载，体积另计
+- 安装包约 49 MB（随版本略有变化，已含本地推理引擎）；本地模型按需下载，体积另计
 - Windows 11 自带 WebView2；在 Windows 10 中，如果缺少 WebView2 运行时，安装程序会自动获取它。
 - 运行本地模型的内存参考：**最低可启动** 8 GB（仅小参数模型、短上下文）；**日常流畅** 16 GB 内存 / 8 GB 显存（7B 模型，4K–8K 上下文）；**长上下文** 16 GB 以上显存或 32 GB 内存（7B 模型，16K 以上上下文，或更大参数模型）。使用 GPU 加速需要支持 Vulkan 的显卡驱动。
 
@@ -172,7 +172,7 @@ ChengYoung is a general-purpose **desktop** AI agent that runs on your own compu
 ### Requirements
 
 - Windows 10 / 11 (x64)
-- The installer is about 65 MB (slightly varies per release; the local inference engine is included); models are downloaded on demand, with separate download sizes
+- The installer is about 49 MB (slightly varies per release; the local inference engine is included); models are downloaded on demand, with separate download sizes
 - Windows 11 ships with WebView2; on Windows 10 the installer fetches the WebView2 runtime if it is missing
 - Memory reference for local models: **minimum to start** 8 GB (small models, short context); **comfortable** 16 GB RAM / 8 GB VRAM (7B models, 4K–8K context); **long context** 16 GB+ VRAM or 32 GB RAM (7B models, 16K+ context, or larger models). GPU acceleration requires a Vulkan-capable driver.
 
