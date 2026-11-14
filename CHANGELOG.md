@@ -6,6 +6,20 @@ Release notes for this project (user-facing). Versions are listed from newest to
 
 更新日志口径：一段 = 一个用户可感知的结果；不写机制与实现细节（注入、回落、渲染、状态枚举等属实现层）；同一件事只出现一次；每节 ≤ 3 条；只写用户会注意到的行为迁移，文档维护与文案微调不单列。
 
+## [1.34.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.34.0) — 2026-11-14
+
+> **中文**：**ACP 集成能力扩展与可选的 MCP 工具延迟加载**——通过 ACP 集成的客户端可为会话打标签并按标签过滤；新增可选的 MCP 工具延迟加载模式（**默认关闭**），适合挂载了大量 MCP 工具的高级场景；本地会话数据库随升级自动迁移，无需手动操作。
+
+### 新增
+- **ACP 会话标签**：通过 ACP 集成的客户端可在创建会话时附加标签（最多 16 组），并按标签精确过滤会话列表。
+- **MCP 工具延迟加载（可选，默认关闭）**：设置 `GOOSE_TOOL_DEFERRAL=lookup` 后，系统提示只列出 MCP 工具名，模型可按需加载完整工具定义——适合挂载大量 MCP 工具的场景；`GOOSE_TOOL_DEFERRAL_ALWAYS_LOAD` 可指定始终完整发布的工具。
+
+> **English**: **ACP integration surface extended, plus optional MCP tool deferral** — clients integrating over ACP can now tag sessions and filter by tag; an optional MCP tool deferral mode (**off by default**) suits setups with many MCP tools; the local session database upgrades automatically.
+
+### Added
+- **ACP session tags**: clients integrating over ACP can attach up to 16 tags when creating a session and filter the session list by tags.
+- **MCP tool deferral (optional, off by default)**: with `GOOSE_TOOL_DEFERRAL=lookup`, the system prompt lists MCP tool names and the model loads full schemas on demand via `enable_tools` — useful with many MCP tools; `GOOSE_TOOL_DEFERRAL_ALWAYS_LOAD` keeps selected tools eager.
+
 ## [1.33.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.33.0) — 2026-11-13
 
 > **中文**：**上游基线同步（v1.59.0）+ 代码模式运行时换代 + 依赖安全清零**——代码模式改用内置 JavaScript 运行时，启动更轻、依赖面收敛；修复取消/超时的 shell 命令残留子进程、多家提供商的请求细节（Databricks Gemini 思考等级、OpenRouter 变体、LiteLLM 视觉、429 重试等待、Bedrock 回落）与压缩/回合错误报告；MCP 运行时与 Markdown 渲染依赖升级，未登记安全通告归零。
@@ -13,6 +27,7 @@ Release notes for this project (user-facing). Versions are listed from newest to
 ### 新增
 - 三个内置提供商模板：**Lemonade**、**RouterPlex**、**AIHubMix**（选择即可接入，无需手工配置）。
 - 代码模式提供更完整的工具发现与批量调用（`list_functions` / `get_function_details` / `execute_javascript`）。
+- **子智能体会话一键跳转**：工具调用卡片新增「查看子智能体会话」入口，可直达对应子任务的会话；子智能体并发数可用 `GOOSE_MAX_CONCURRENT_SUBAGENTS` 环境变量配置。（上游 #12946 / #12998）
 
 ### 变更
 - **代码模式改用内置 JavaScript 运行时**：不再依赖外部 JS 运行时组件，安装包与依赖面更轻；代码块标记与工具名统一为 `execute_javascript`。
@@ -35,6 +50,7 @@ Release notes for this project (user-facing). Versions are listed from newest to
 ### Added
 - Three built-in provider templates: **Lemonade**, **RouterPlex**, and **AIHubMix** (pick and connect, no manual configuration).
 - Code mode offers fuller tool discovery and batching (`list_functions`, `get_function_details`, `execute_javascript`).
+- **One-click jump to subagent sessions**: tool-call cards now offer a "View subagent session" entry to open the corresponding subagent's session; the subagent concurrency limit is configurable via the `GOOSE_MAX_CONCURRENT_SUBAGENTS` environment variable. (upstream #12946 / #12998)
 
 ### Changed
 - **Code mode now uses a built-in JavaScript runtime**: no external JS runtime component, lighter install and dependency surface; the code fence tag and tool name are unified as `execute_javascript`.
