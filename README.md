@@ -81,7 +81,7 @@ ChengYoung is a general-purpose **desktop** AI agent that runs on your own compu
 ## Verify the download
 
 ```powershell
-# Replace <version> with the version in the file name you downloaded (for example, ChengYoung_1.33.0_x64-setup.exe)
+# Replace <version> with the version in the file name you downloaded (for example, ChengYoung_1.34.0_x64-setup.exe)
 certutil -hashfile ChengYoung_<version>_x64-setup.exe SHA256
 ```
 
