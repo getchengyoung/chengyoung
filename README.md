@@ -8,7 +8,7 @@
 <a href="https://github.com/getchengyoung/chengyoung/releases/latest"><img src="https://img.shields.io/github/v/release/getchengyoung/chengyoung?label=latest%20release" alt="Latest release"></a>
 <img src="https://img.shields.io/badge/platform-Windows%20x64-blue" alt="Platform: Windows x64">
 
-**English** | [简体中文](README.zh.md)
+[中文](README.zh.md) · **English**
 
 </div>
 
@@ -49,7 +49,7 @@ ChengYoung is a general-purpose **desktop** AI agent that runs on your own compu
 | Sessions | History, rename, pin, export, archive, one-click **copy as Markdown** for sharing, and branch a new session from any message; very long sessions load the latest 100 messages first (older history expands on demand, Ctrl+F searches everything), and messages send instantly — the session is created in the background with your draft kept on failure |
 | **Screenshot Ask** | Press Ctrl+Alt+A anywhere, select any region on a full-screen snapshot, and the screenshot goes straight into the input box — with three one-tap prompts (extract text / translate / solve). Screenshots are processed in memory only: never saved to disk, never uploaded. The shortcut is remappable or can be disabled in Settings |
 | **Voice dictation** | Speak and have text filled into the input box: on-device Whisper transcription (**fully offline**) or cloud providers (OpenAI / Groq / ElevenLabs); the transcription language is configurable in Settings |
-| **Session modes** | Autonomous / Manual / Smart / Chat-only — switch in one click from the input box (applies to the current session; the default for new sessions lives in Settings) |
+| **Session modes** | Autonomous / Manual / Smart — switch in one click from the input box (applies to the current session; the default for new sessions lives in Settings) |
 | Workflows (Recipes) | Turn recurring tasks into reusable flows and share them with `goose://recipe?...` links; the content is shown and changes are confirmed before running |
 | Skills / Apps / Scheduler / Extensions | Built-in capabilities are managed visually in-app; extensions use the MCP protocol (third-party MCP servers supported), and sensitive actions require permission first |
 | **Agent browser control** | Read page text, click elements, and type into or submit forms — **off by default**, per-site authorization + per-action confirmation, sensitive field input is automatically intercepted on the page, and input content is never logged |
@@ -81,7 +81,7 @@ ChengYoung is a general-purpose **desktop** AI agent that runs on your own compu
 ## Verify the download
 
 ```powershell
-# Replace <version> with the version in the file name you downloaded (for example, ChengYoung_1.34.0_x64-setup.exe)
+# Replace <version> with the version in the file name you downloaded (for example, ChengYoung_1.35.0_x64-setup.exe)
 certutil -hashfile ChengYoung_<version>_x64-setup.exe SHA256
 ```
 
