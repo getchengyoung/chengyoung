@@ -8,7 +8,7 @@
 <a href="https://github.com/getchengyoung/chengyoung/releases/latest"><img src="https://img.shields.io/github/v/release/getchengyoung/chengyoung?label=latest%20release" alt="Latest release"></a>
 <img src="https://img.shields.io/badge/platform-Windows%20x64-blue" alt="Platform: Windows x64">
 
-[English](README.md) | **简体中文**
+**中文** · [English](README.md)
 
 </div>
 
@@ -51,7 +51,7 @@ ChengYoung 是一款运行在本机的通用桌面 AI 智能体应用，可用�
 | 云端模型 | 自备 API Key 接入 Anthropic、OpenAI、Google、OpenRouter、Ollama 等提供商；火山引擎 Coding Plan 订阅选 `volcengine-coding-plan` 模板，模型 ID 填聚合入口 `ark-code-latest`（由火山路由到实际模型） |
 | 会话 | 支持会话历史、重命名、置顶、导出、归档、一键复制为 Markdown 分享，以及从任意消息派生新会话；超长会话默认加载最近 100 条消息（更早历史一键展开，Ctrl+F 全文搜索），发送消息即刻响应（会话在后台创建，失败时保留草稿可重试） |
 | **语音输入（听写）** | 按住说话，转成文字填入输入框：本地 Whisper **完全离线转写**（零联网），或接入 OpenAI / Groq / ElevenLabs 云端转写；转写语言可在设置中指定 |
-| **会话模式** | 自主 / 手动 / 智能 / 仅聊天四种模式，在输入框中一键切换（仅对当前会话生效；新会话的默认模式在设置中选择） |
+| **会话模式** | 自主 / 手动 / 智能三种模式，在输入框中一键切换（仅对当前会话生效；新会话的默认模式在设置中选择） |
 | 工作流（Recipe） | 将常用任务沉淀为可复用流程；可通过 `goose://recipe?...` 深链分享，运行前会显示流程内容并进行变更确认 |
 | 技能、应用、调度、扩展 | 内置能力提供可视化管理；扩展采用 MCP 协议（可自行配置第三方 MCP 服务器），敏感操作会先请求许可 |
 | **Agent 浏览器控制** | 读取页面文本、点击元素、输入并提交表单，**默认关闭**、按站点授权并逐次确认，页面端自动拦截敏感字段输入，输入内容绝不写入日志 |
@@ -83,7 +83,7 @@ ChengYoung 是一款运行在本机的通用桌面 AI 智能体应用，可用�
 ## 校验下载
 
 ```powershell
-# 把 <版本号> 换成实际下载的文件名中的版本号（例如 ChengYoung_1.34.0_x64-setup.exe）
+# 把 <版本号> 换成实际下载的文件名中的版本号（例如 ChengYoung_1.35.0_x64-setup.exe）
 certutil -hashfile ChengYoung_<版本号>_x64-setup.exe SHA256
 ```
 
