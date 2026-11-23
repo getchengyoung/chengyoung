@@ -19,7 +19,7 @@ ChengYoung is a general-purpose **desktop** AI agent that runs on your own compu
 ---
 
 <div align="center">
-  <img src="docs/screenshots/ui-1.0-en.png" alt="ChengYoung workspace: local model, starter prompts and recent sessions" width="900">
+  <img src="docs/screenshots/ui-1.35-en.png" alt="ChengYoung workspace: local model, starter prompts and recent sessions" width="900">
 </div>
 
 ## Highlights
