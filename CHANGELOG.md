@@ -6,6 +6,44 @@ Release notes for this project (user-facing). Versions are listed from newest to
 
 更新日志口径：一段 = 一个用户可感知的结果；不写机制与实现细节（注入、回落、渲染、状态枚举等属实现层）；同一件事只出现一次；每节 ≤ 3 条；只写用户会注意到的行为迁移，文档维护与文案微调不单列。
 
+## [1.35.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.35.0) — 2026-11-23
+
+> **中文**：**上游基线同步（v1.60.2）+ 本地推理引擎升级**——新增 Cortecs / OnySoft 内置提供商与 Gemini 4 系列模型支持；模型目录数据刷新，新模型与上下文窗口标注更准确；本地推理引擎升级，本地模型运行更稳更快；「仅聊天」模式退役（旧配置自动迁移，零损失）；工作流的结构化结果以更简洁的状态行呈现。
+
+### 新增
+- **两个内置提供商模板**：**Cortecs**、**OnySoft**（选择即可接入，无需手工配置）。
+- **Gemini 4 系列模型**与 **xhigh 思考等级**支持。
+- **工作流结构化结果简洁呈现**：工作流运行产出的结构化结果以一行状态显示（返回中 / 已返回 / 被拒绝 / 未收集），不再占用整块工具调用卡片。
+
+### 变更
+- **本地推理引擎升级**：本地模型运行更稳定、更快（独显全量加速保持不变）。
+- **模型目录数据刷新**：新增一批模型，上下文窗口与能力标注更准确。
+
+### 移除
+- **「仅聊天」模式退役**：模式选择精简为「自主 / 手动 / 智能」三档；此前使用「仅聊天」的会话与配置会自动按「手动」模式加载，无需手动调整。
+
+### 修复
+- **部分模型上下文窗口标注滞后**：火山 Coding Plan 等模型的上下文窗口随目录刷新修正，压缩时机更准确。
+- **超大用量计数**：长会话的超大 token 计数不再溢出，用量统计保持准确。
+
+> **English**: **Upstream baseline sync (v1.60.2) and a local inference engine upgrade** — new Cortecs / OnySoft built-in providers and Gemini 4 family support; a refreshed model catalog with more accurate context-window and capability labels; an upgraded local inference engine for steadier, faster local models; the "Chat only" mode is retired (existing settings migrate automatically with no loss); recipe structured results now show as a concise status line.
+
+### Added
+- **Two built-in provider templates**: **Cortecs** and **OnySoft** (pick to connect, no manual setup).
+- **Gemini 4 family models** and the **xhigh thinking level**.
+- **Concise recipe structured results**: a recipe's structured result shows as a single status line (returning / returned / rejected / not collected) instead of a full tool-call card.
+
+### Changed
+- **Local inference engine upgraded**: local models run steadier and faster (full discrete-GPU acceleration unchanged).
+- **Model catalog refreshed**: new models plus more accurate context-window and capability labels.
+
+### Removed
+- **"Chat only" mode retired**: mode selection is now Autonomous / Manual / Smart; sessions and settings previously on "Chat only" load as Manual automatically, no manual change needed.
+
+### Fixed
+- **Stale context-window labels for some models**: Volcengine Coding Plan and others corrected via the catalog refresh, so compaction timing is more accurate.
+- **Very large usage counts**: token counts in long sessions no longer overflow, keeping usage statistics accurate.
+
 ## [1.34.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.34.0) — 2026-11-14
 
 > **中文**：**ACP 集成能力扩展与可选的 MCP 工具延迟加载**——通过 ACP 集成的客户端可为会话打标签并按标签过滤；新增可选的 MCP 工具延迟加载模式（**默认关闭**），适合挂载了大量 MCP 工具的高级场景；本地会话数据库随升级自动迁移，无需手动操作。
