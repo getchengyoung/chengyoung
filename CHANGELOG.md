@@ -6,6 +6,24 @@ Release notes for this project (user-facing). Versions are listed from newest to
 
 更新日志口径：一段 = 一个用户可感知的结果；不写机制与实现细节（注入、回落、渲染、状态枚举等属实现层）；同一件事只出现一次；每节 ≤ 3 条；只写用户会注意到的行为迁移，文档维护与文案微调不单列。
 
+## [1.36.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.36.0) — 2026-11-25
+
+> **中文**：**更新链路境内兜底**——检查更新在 GitHub 不可达时自动改用境内镜像；更新失败时提供官网手动下载入口。
+
+### 新增
+- **更新失败时的手动下载指引**：检查或下载更新失败时，设置更新区提供「打开下载页」入口，可从官网下载完整安装包覆盖安装（设置与数据保留）。
+
+### 变更
+- **检查更新新增境内镜像**：GitHub 仍为首选来源；GitHub 不可达时自动改用境内镜像 dl.chengyoung.cn（快速切换，正常更新不受影响）。「隐私详情」文案已同步。
+
+> **English**: **Update delivery with a China fallback** — update checks fall back to a China mirror when GitHub is unreachable, and a failed update now offers a manual download entry on the official site.
+
+### Added
+- **Manual download guidance on update failure**: if checking or downloading an update fails, the update settings offer an "Open download page" action to get the full installer from the official site and install over the current version (settings and data are kept).
+
+### Changed
+- **Update checks gain a China mirror**: GitHub stays the first source; when it is unreachable the check automatically falls back to dl.chengyoung.cn (quick failover; normal updates unaffected). Privacy details updated accordingly.
+
 ## [1.35.0](https://github.com/getchengyoung/chengyoung/releases/tag/v1.35.0) — 2026-11-23
 
 > **中文**：**上游基线同步（v1.60.2）+ 本地推理引擎升级**——新增 Cortecs / OnySoft 内置提供商与 Gemini 4 系列模型支持；模型目录数据刷新，新模型与上下文窗口标注更准确；本地推理引擎升级，本地模型运行更稳更快；「仅聊天」模式退役（旧配置自动迁移，零损失）；工作流的结构化结果以更简洁的状态行呈现。
